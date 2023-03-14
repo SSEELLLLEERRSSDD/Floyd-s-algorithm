@@ -10,15 +10,16 @@ namespace ConsoleApplication39
     {
         static void Main(string[] args)
         {
-            int max = 9999999;
+            int maxx = 9999999;
             int len = 6;
+            int[,] mat1 = new int[6, 6];
             int[,] mat = {
-    {0, 7, max, max, max,max},
-    {max, 0, 2, max, 9,max},
-    {max, 2, 0, 1, 3,11},
-    {max, max, max, 0, max, 5},
-    {13, max, max, 3, 0,5},
-    {max, max, max, max, max,0}
+    {0, 7, maxx, maxx, maxx,maxx},
+    {maxx, 0, 2, maxx, 9,maxx},
+    {maxx, 2, 0, 1, 3,11},
+    {maxx, maxx, maxx, 0, maxx, 5},
+    {13, maxx, maxx, 3, 0,5},
+    {maxx, maxx, maxx, maxx, maxx,0}
 }; Console.WriteLine("Откуда:");
             int from = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Куда:");
@@ -27,10 +28,15 @@ namespace ConsoleApplication39
             for (int k=0; k < len; ++k)
         for (int i=0; i < len; ++i)
             for (int j = 0; j < len; ++j)
-                if (mat[i,k] < max && mat[k,j] < max)
-                    if (mat[i,k] + mat[k,j] < mat[i,j])
-                        mat[i,j] = mat[i,k] + mat[k,j];
-            Console.WriteLine(mat[from, to]);
+                if (mat[i, k] < maxx && mat[k, j] < maxx)  {    
+                    
+                    if (mat[i, k] + mat[k, j] < mat[i, j])
+                    {
+                        mat[i, j] = mat[i, k] + mat[k, j];
+                        mat1[i, j] = Math.Min(mat[i, j], mat[i, k] + mat[k, j]);
+                    }}
+
+            Console.WriteLine(mat1[from, to]);
             Console.ReadLine();
             
         }
